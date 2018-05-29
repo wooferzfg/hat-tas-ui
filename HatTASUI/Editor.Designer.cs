@@ -117,25 +117,6 @@
             this.tableLayoutPanel1.SetColumnSpan(this.framesList, 3);
             this.framesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.framesList.FormattingEnabled = true;
-            this.framesList.Items.AddRange(new object[] {
-            "Frame 1",
-            "Frame 2",
-            "Frame 3",
-            "Frame 1",
-            "Frame 2",
-            "Frame 3",
-            "Frame 1",
-            "Frame 2",
-            "Frame 3",
-            "Frame 1",
-            "Frame 2",
-            "Frame 3",
-            "Frame 1",
-            "Frame 2",
-            "Frame 3",
-            "Frame 1",
-            "Frame 2",
-            "Frame 3"});
             this.framesList.Location = new System.Drawing.Point(3, 3);
             this.framesList.Name = "framesList";
             this.framesList.Size = new System.Drawing.Size(317, 394);
@@ -146,7 +127,12 @@
             this.newFrameSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.newFrameSelect.Location = new System.Drawing.Point(113, 448);
             this.newFrameSelect.Maximum = new decimal(new int[] {
-            100000,
+            999999,
+            0,
+            0,
+            0});
+            this.newFrameSelect.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -154,6 +140,11 @@
             this.tableLayoutPanel1.SetRowSpan(this.newFrameSelect, 2);
             this.newFrameSelect.Size = new System.Drawing.Size(75, 20);
             this.newFrameSelect.TabIndex = 1;
+            this.newFrameSelect.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnAddFrame
             // 
@@ -192,6 +183,7 @@
             // 
             this.grpInputs.Controls.Add(this.tableLayoutPanel2);
             this.grpInputs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpInputs.Enabled = false;
             this.grpInputs.Location = new System.Drawing.Point(326, 3);
             this.grpInputs.Name = "grpInputs";
             this.tableLayoutPanel1.SetRowSpan(this.grpInputs, 3);

@@ -14,7 +14,8 @@ namespace HatTASUI
     {
         public const int STICK_MAX = 65535;
 
-        public FrameInputs PreviousFrame { get; set; }
+        public FrameState PreviousFrame { get; set; }
+        public List<Frame> Frames { get; set; }
 
         private int _LeftX;
         private int _LeftY;
@@ -54,7 +55,7 @@ namespace HatTASUI
         {
             InitializeComponent();
 
-            PreviousFrame = new FrameInputs();
+            PreviousFrame = new FrameState();
 
             InitializeStickDrawings();
         }
