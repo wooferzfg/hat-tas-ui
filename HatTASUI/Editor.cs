@@ -14,6 +14,36 @@ namespace HatTASUI
     {
         public const int STICK_MAX = 65535;
 
+        private int _CurrentFrame = 0;
+
+        public int CurrentFrame
+        {
+            get
+            {
+                return _CurrentFrame;
+            }
+            set
+            {
+                var frameIndex = Frames.FirstOrDefault(x => x.FrameNumber == value);
+                if (frameIndex != null)
+                {
+                    UpdatePreviousFrame(value);
+                    _CurrentFrame = value;
+                    grpInputs.Enabled = true;
+                    btnRemoveFrame.Enabled = true;
+                    btnMoveFrame.Enabled = true;
+                }
+                else
+                {
+                    PreviousFrame = new FrameState();
+                    _CurrentFrame = 0;
+                    grpInputs.Enabled = false;
+                    btnRemoveFrame.Enabled = false;
+                    btnMoveFrame.Enabled = false;
+                }
+                ResetFromPreviousFrame();
+            }
+        }
         public FrameState PreviousFrame { get; set; }
         public List<Frame> Frames { get; set; }
 
@@ -54,10 +84,9 @@ namespace HatTASUI
         public Editor()
         {
             InitializeComponent();
-
-            PreviousFrame = new FrameState();
-
             InitializeStickDrawings();
+            Frames = new List<Frame>();
+            CurrentFrame = 0;
         }
 
         private void InitializeStickDrawings()
@@ -114,6 +143,26 @@ namespace HatTASUI
                 LeftX = (int)(((double)e.X / leftStick.Width) * STICK_MAX);
                 LeftY = (int)(((double)e.Y / leftStick.Width) * STICK_MAX);
             }
+        }
+
+        private void UpdatePreviousFrame(int upToFrame)
+        {
+            PreviousFrame = new FrameState();
+            var upToIndex = IndexOfFrame(upToFrame);
+            for (var index = 0; index < upToIndex; index++)
+            {
+                PreviousFrame.UpdateFromChanges(Frames[index].Changes);
+            }
+        }
+
+        private int IndexOfFrame(int frameNumber)
+        {
+            var index = 0;
+            while (index < Frames.Count && Frames[index].FrameNumber < frameNumber)
+            {
+                index++;
+            }
+            return index;
         }
 
         private void btnLeftLeft_Click(object sender, EventArgs e)
@@ -209,6 +258,70 @@ namespace HatTASUI
         private void leftStick_MouseClick(object sender, MouseEventArgs e)
         {
             UpdateLeftStick(e);
+        }
+
+        private bool AddFrame(Frame frame)
+        {
+            var frameNumber = frame.FrameNumber;
+            var insertIndex = IndexOfFrame(frameNumber);
+            if (insertIndex >= Frames.Count || Frames[insertIndex].FrameNumber != frameNumber)
+            {
+                Frames.Insert(insertIndex, frame);
+                framesList.Items.Insert(insertIndex, frameNumber);
+                framesList.SelectedIndex = insertIndex;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void btnAddFrame_Click(object sender, EventArgs e)
+        {
+            var frameNumber = (int)newFrameSelect.Value;
+            var frame = new Frame(frameNumber);
+            AddFrame(frame);
+        }
+
+        private void btnRemoveFrame_Click(object sender, EventArgs e)
+        {
+            var index = framesList.SelectedIndex;
+            if (index >= 0 && index < Frames.Count)
+            {
+                Frames.RemoveAt(index);
+                framesList.Items.RemoveAt(index);
+            }
+        }
+
+        private void btnMoveFrame_Click(object sender, EventArgs e)
+        {
+            var index = framesList.SelectedIndex;
+            if (index >= 0 && index < Frames.Count)
+            {
+                var previousFrameNumber = Frames[index].FrameNumber;
+                var frame = Frames[index].Clone();
+                frame.FrameNumber = (int)newFrameSelect.Value;
+                if (AddFrame(frame))
+                {
+                    index = IndexOfFrame(previousFrameNumber);
+                    Frames.RemoveAt(index);
+                    framesList.Items.RemoveAt(index);
+                }
+            }
+        }
+
+        private void framesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (framesList.SelectedItem != null)
+            {
+                CurrentFrame = (int)framesList.SelectedItem;
+            }
+            else
+            {
+                CurrentFrame = 0;
+            }
         }
     }
 }

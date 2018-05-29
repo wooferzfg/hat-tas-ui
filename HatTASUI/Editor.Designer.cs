@@ -70,7 +70,7 @@
             this.chkX = new System.Windows.Forms.CheckBox();
             this.chkB = new System.Windows.Forms.CheckBox();
             this.chkA = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMoveFrame = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newFrameSelect)).BeginInit();
             this.grpInputs.SuspendLayout();
@@ -99,7 +99,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lblNewFrame, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnRemoveFrame, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.grpInputs, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnMoveFrame, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -121,6 +121,7 @@
             this.framesList.Name = "framesList";
             this.framesList.Size = new System.Drawing.Size(317, 394);
             this.framesList.TabIndex = 0;
+            this.framesList.SelectedIndexChanged += new System.EventHandler(this.framesList_SelectedIndexChanged);
             // 
             // newFrameSelect
             // 
@@ -155,6 +156,7 @@
             this.btnAddFrame.TabIndex = 2;
             this.btnAddFrame.Text = "Add Frame";
             this.btnAddFrame.UseVisualStyleBackColor = true;
+            this.btnAddFrame.Click += new System.EventHandler(this.btnAddFrame_Click);
             // 
             // lblNewFrame
             // 
@@ -178,12 +180,12 @@
             this.btnRemoveFrame.TabIndex = 3;
             this.btnRemoveFrame.Text = "Remove Selected Frame";
             this.btnRemoveFrame.UseVisualStyleBackColor = true;
+            this.btnRemoveFrame.Click += new System.EventHandler(this.btnRemoveFrame_Click);
             // 
             // grpInputs
             // 
             this.grpInputs.Controls.Add(this.tableLayoutPanel2);
             this.grpInputs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpInputs.Enabled = false;
             this.grpInputs.Location = new System.Drawing.Point(326, 3);
             this.grpInputs.Name = "grpInputs";
             this.tableLayoutPanel1.SetRowSpan(this.grpInputs, 3);
@@ -632,15 +634,16 @@
             this.chkA.Text = "A";
             this.chkA.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnMoveFrame
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(194, 461);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Move Selected Frame";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMoveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMoveFrame.Location = new System.Drawing.Point(194, 461);
+            this.btnMoveFrame.Name = "btnMoveFrame";
+            this.btnMoveFrame.Size = new System.Drawing.Size(126, 23);
+            this.btnMoveFrame.TabIndex = 6;
+            this.btnMoveFrame.Text = "Move Selected Frame";
+            this.btnMoveFrame.UseVisualStyleBackColor = true;
+            this.btnMoveFrame.Click += new System.EventHandler(this.btnMoveFrame_Click);
             // 
             // Editor
             // 
@@ -703,7 +706,7 @@
         private System.Windows.Forms.TrackBar trkLeftX;
         private System.Windows.Forms.TrackBar trkLeftY;
         private System.Windows.Forms.PictureBox leftStick;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMoveFrame;
         private System.Windows.Forms.Button btnLeftLeft;
         private System.Windows.Forms.Button btnLeftDown;
         private System.Windows.Forms.Button btnLeftUp;

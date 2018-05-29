@@ -18,5 +18,13 @@ namespace HatTASUI
             Changes = new Dictionary<string, int>();
             Comment = string.Empty;
         }
+
+        public Frame Clone()
+        {
+            var newFrame = new Frame(FrameNumber);
+            newFrame.Changes = Changes.ToDictionary(x => x.Key, x => x.Value);
+            newFrame.Comment = Comment;
+            return newFrame;
+        }
     }
 }
