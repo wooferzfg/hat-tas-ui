@@ -54,6 +54,22 @@
             this.btnLeftReset = new System.Windows.Forms.Button();
             this.btnLeftNeutral = new System.Windows.Forms.Button();
             this.grpRightStick = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnRightNeutral = new System.Windows.Forms.Button();
+            this.rightStick = new System.Windows.Forms.PictureBox();
+            this.trkRightX = new System.Windows.Forms.TrackBar();
+            this.txtRightX = new System.Windows.Forms.NumericUpDown();
+            this.btnRightReset = new System.Windows.Forms.Button();
+            this.trkRightY = new System.Windows.Forms.TrackBar();
+            this.txtRightY = new System.Windows.Forms.NumericUpDown();
+            this.btnRightLeft = new System.Windows.Forms.Button();
+            this.btnRightDown = new System.Windows.Forms.Button();
+            this.btnRightUp = new System.Windows.Forms.Button();
+            this.btnRightRight = new System.Windows.Forms.Button();
+            this.btnRightDownLeft = new System.Windows.Forms.Button();
+            this.btnRightDownRight = new System.Windows.Forms.Button();
+            this.btnRightUpLeft = new System.Windows.Forms.Button();
+            this.btnRightUpRight = new System.Windows.Forms.Button();
             this.grpButtons = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.chkRight = new System.Windows.Forms.CheckBox();
@@ -82,6 +98,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.leftStick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLeftX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLeftY)).BeginInit();
+            this.grpRightStick.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rightStick)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkRightX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRightX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkRightY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRightY)).BeginInit();
             this.grpButtons.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -428,6 +451,7 @@
             // 
             // grpRightStick
             // 
+            this.grpRightStick.Controls.Add(this.tableLayoutPanel5);
             this.grpRightStick.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpRightStick.Location = new System.Drawing.Point(339, 3);
             this.grpRightStick.Name = "grpRightStick";
@@ -435,6 +459,211 @@
             this.grpRightStick.TabIndex = 1;
             this.grpRightStick.TabStop = false;
             this.grpRightStick.Text = "Right Stick";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel5.Controls.Add(this.btnRightNeutral, 0, 6);
+            this.tableLayoutPanel5.Controls.Add(this.rightStick, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.trkRightX, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtRightX, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightReset, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.trkRightY, 3, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtRightY, 3, 2);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightLeft, 0, 4);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightDown, 1, 4);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightUp, 2, 4);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightRight, 3, 4);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightDownLeft, 0, 5);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightDownRight, 1, 5);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightUpLeft, 2, 5);
+            this.tableLayoutPanel5.Controls.Add(this.btnRightUpRight, 3, 5);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 7;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(324, 313);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // btnRightNeutral
+            // 
+            this.btnRightNeutral.Location = new System.Drawing.Point(3, 287);
+            this.btnRightNeutral.Name = "btnRightNeutral";
+            this.btnRightNeutral.Size = new System.Drawing.Size(75, 23);
+            this.btnRightNeutral.TabIndex = 28;
+            this.btnRightNeutral.Text = "Neutral";
+            this.btnRightNeutral.UseVisualStyleBackColor = true;
+            this.btnRightNeutral.Click += new System.EventHandler(this.btnRightNeutral_Click);
+            // 
+            // rightStick
+            // 
+            this.tableLayoutPanel5.SetColumnSpan(this.rightStick, 3);
+            this.rightStick.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rightStick.Location = new System.Drawing.Point(29, 41);
+            this.rightStick.Margin = new System.Windows.Forms.Padding(29, 3, 29, 3);
+            this.rightStick.Name = "rightStick";
+            this.tableLayoutPanel5.SetRowSpan(this.rightStick, 2);
+            this.rightStick.Size = new System.Drawing.Size(185, 185);
+            this.rightStick.TabIndex = 17;
+            this.rightStick.TabStop = false;
+            this.rightStick.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rightStick_MouseClick);
+            this.rightStick.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rightStick_MouseMove);
+            // 
+            // trkRightX
+            // 
+            this.trkRightX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.SetColumnSpan(this.trkRightX, 2);
+            this.trkRightX.Location = new System.Drawing.Point(3, 3);
+            this.trkRightX.Maximum = 65535;
+            this.trkRightX.Name = "trkRightX";
+            this.trkRightX.Size = new System.Drawing.Size(156, 32);
+            this.trkRightX.TabIndex = 1;
+            this.trkRightX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trkRightX.ValueChanged += new System.EventHandler(this.trkRightX_ValueChanged);
+            // 
+            // txtRightX
+            // 
+            this.txtRightX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRightX.Location = new System.Drawing.Point(165, 9);
+            this.txtRightX.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.txtRightX.Name = "txtRightX";
+            this.txtRightX.Size = new System.Drawing.Size(75, 20);
+            this.txtRightX.TabIndex = 14;
+            this.txtRightX.ValueChanged += new System.EventHandler(this.txtRightX_ValueChanged);
+            // 
+            // btnRightReset
+            // 
+            this.btnRightReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRightReset.Location = new System.Drawing.Point(246, 7);
+            this.btnRightReset.Name = "btnRightReset";
+            this.btnRightReset.Size = new System.Drawing.Size(75, 23);
+            this.btnRightReset.TabIndex = 16;
+            this.btnRightReset.Text = "Reset";
+            this.btnRightReset.UseVisualStyleBackColor = true;
+            this.btnRightReset.Click += new System.EventHandler(this.btnRightReset_Click);
+            // 
+            // trkRightY
+            // 
+            this.trkRightY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.trkRightY.Location = new System.Drawing.Point(261, 41);
+            this.trkRightY.Maximum = 0;
+            this.trkRightY.Minimum = -65535;
+            this.trkRightY.Name = "trkRightY";
+            this.trkRightY.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trkRightY.Size = new System.Drawing.Size(45, 156);
+            this.trkRightY.TabIndex = 18;
+            this.trkRightY.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trkRightY.ValueChanged += new System.EventHandler(this.trkRightY_ValueChanged);
+            // 
+            // txtRightY
+            // 
+            this.txtRightY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRightY.Location = new System.Drawing.Point(246, 204);
+            this.txtRightY.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.txtRightY.Name = "txtRightY";
+            this.txtRightY.Size = new System.Drawing.Size(75, 20);
+            this.txtRightY.TabIndex = 19;
+            this.txtRightY.ValueChanged += new System.EventHandler(this.txtRightY_ValueChanged);
+            // 
+            // btnRightLeft
+            // 
+            this.btnRightLeft.Location = new System.Drawing.Point(3, 229);
+            this.btnRightLeft.Name = "btnRightLeft";
+            this.btnRightLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnRightLeft.TabIndex = 20;
+            this.btnRightLeft.Text = "Left";
+            this.btnRightLeft.UseVisualStyleBackColor = true;
+            this.btnRightLeft.Click += new System.EventHandler(this.btnRightLeft_Click);
+            // 
+            // btnRightDown
+            // 
+            this.btnRightDown.Location = new System.Drawing.Point(84, 229);
+            this.btnRightDown.Name = "btnRightDown";
+            this.btnRightDown.Size = new System.Drawing.Size(75, 23);
+            this.btnRightDown.TabIndex = 21;
+            this.btnRightDown.Text = "Down";
+            this.btnRightDown.UseVisualStyleBackColor = true;
+            this.btnRightDown.Click += new System.EventHandler(this.btnRightDown_Click);
+            // 
+            // btnRightUp
+            // 
+            this.btnRightUp.Location = new System.Drawing.Point(165, 229);
+            this.btnRightUp.Name = "btnRightUp";
+            this.btnRightUp.Size = new System.Drawing.Size(75, 23);
+            this.btnRightUp.TabIndex = 22;
+            this.btnRightUp.Text = "Up";
+            this.btnRightUp.UseVisualStyleBackColor = true;
+            this.btnRightUp.Click += new System.EventHandler(this.btnRightUp_Click);
+            // 
+            // btnRightRight
+            // 
+            this.btnRightRight.Location = new System.Drawing.Point(246, 229);
+            this.btnRightRight.Name = "btnRightRight";
+            this.btnRightRight.Size = new System.Drawing.Size(75, 23);
+            this.btnRightRight.TabIndex = 23;
+            this.btnRightRight.Text = "Right";
+            this.btnRightRight.UseVisualStyleBackColor = true;
+            this.btnRightRight.Click += new System.EventHandler(this.btnRightRight_Click);
+            // 
+            // btnRightDownLeft
+            // 
+            this.btnRightDownLeft.Location = new System.Drawing.Point(3, 258);
+            this.btnRightDownLeft.Name = "btnRightDownLeft";
+            this.btnRightDownLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnRightDownLeft.TabIndex = 24;
+            this.btnRightDownLeft.Text = "Down-Left";
+            this.btnRightDownLeft.UseVisualStyleBackColor = true;
+            this.btnRightDownLeft.Click += new System.EventHandler(this.btnRightDownLeft_Click);
+            // 
+            // btnRightDownRight
+            // 
+            this.btnRightDownRight.Location = new System.Drawing.Point(84, 258);
+            this.btnRightDownRight.Name = "btnRightDownRight";
+            this.btnRightDownRight.Size = new System.Drawing.Size(75, 23);
+            this.btnRightDownRight.TabIndex = 25;
+            this.btnRightDownRight.Text = "Down-Right";
+            this.btnRightDownRight.UseVisualStyleBackColor = true;
+            this.btnRightDownRight.Click += new System.EventHandler(this.btnRightDownRight_Click);
+            // 
+            // btnRightUpLeft
+            // 
+            this.btnRightUpLeft.Location = new System.Drawing.Point(165, 258);
+            this.btnRightUpLeft.Name = "btnRightUpLeft";
+            this.btnRightUpLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnRightUpLeft.TabIndex = 26;
+            this.btnRightUpLeft.Text = "Up-Left";
+            this.btnRightUpLeft.UseVisualStyleBackColor = true;
+            this.btnRightUpLeft.Click += new System.EventHandler(this.btnRightUpLeft_Click);
+            // 
+            // btnRightUpRight
+            // 
+            this.btnRightUpRight.Location = new System.Drawing.Point(246, 258);
+            this.btnRightUpRight.Name = "btnRightUpRight";
+            this.btnRightUpRight.Size = new System.Drawing.Size(75, 23);
+            this.btnRightUpRight.TabIndex = 27;
+            this.btnRightUpRight.Text = "Up-Right";
+            this.btnRightUpRight.UseVisualStyleBackColor = true;
+            this.btnRightUpRight.Click += new System.EventHandler(this.btnRightUpRight_Click);
             // 
             // grpButtons
             // 
@@ -490,6 +719,7 @@
             this.chkRight.TabIndex = 13;
             this.chkRight.Text = "D Right";
             this.chkRight.UseVisualStyleBackColor = true;
+            this.chkRight.CheckedChanged += new System.EventHandler(this.chkRight_CheckedChanged);
             // 
             // chkUp
             // 
@@ -501,6 +731,7 @@
             this.chkUp.TabIndex = 12;
             this.chkUp.Text = "D Up";
             this.chkUp.UseVisualStyleBackColor = true;
+            this.chkUp.CheckedChanged += new System.EventHandler(this.chkUp_CheckedChanged);
             // 
             // chkDown
             // 
@@ -512,6 +743,7 @@
             this.chkDown.TabIndex = 11;
             this.chkDown.Text = "D Down";
             this.chkDown.UseVisualStyleBackColor = true;
+            this.chkDown.CheckedChanged += new System.EventHandler(this.chkDown_CheckedChanged);
             // 
             // chkLeft
             // 
@@ -523,6 +755,7 @@
             this.chkLeft.TabIndex = 10;
             this.chkLeft.Text = "D Left";
             this.chkLeft.UseVisualStyleBackColor = true;
+            this.chkLeft.CheckedChanged += new System.EventHandler(this.chkLeft_CheckedChanged);
             // 
             // chkSelect
             // 
@@ -534,6 +767,7 @@
             this.chkSelect.TabIndex = 9;
             this.chkSelect.Text = "Select";
             this.chkSelect.UseVisualStyleBackColor = true;
+            this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
             // 
             // chkRT
             // 
@@ -545,6 +779,7 @@
             this.chkRT.TabIndex = 8;
             this.chkRT.Text = "RT";
             this.chkRT.UseVisualStyleBackColor = true;
+            this.chkRT.CheckedChanged += new System.EventHandler(this.chkRT_CheckedChanged);
             // 
             // chkLT
             // 
@@ -556,6 +791,7 @@
             this.chkLT.TabIndex = 7;
             this.chkLT.Text = "LT";
             this.chkLT.UseVisualStyleBackColor = true;
+            this.chkLT.CheckedChanged += new System.EventHandler(this.chkLT_CheckedChanged);
             // 
             // chkRB
             // 
@@ -567,6 +803,7 @@
             this.chkRB.TabIndex = 6;
             this.chkRB.Text = "RB";
             this.chkRB.UseVisualStyleBackColor = true;
+            this.chkRB.CheckedChanged += new System.EventHandler(this.chkRB_CheckedChanged);
             // 
             // chkLB
             // 
@@ -578,6 +815,7 @@
             this.chkLB.TabIndex = 5;
             this.chkLB.Text = "LB";
             this.chkLB.UseVisualStyleBackColor = true;
+            this.chkLB.CheckedChanged += new System.EventHandler(this.chkLB_CheckedChanged);
             // 
             // chkStart
             // 
@@ -589,6 +827,7 @@
             this.chkStart.TabIndex = 4;
             this.chkStart.Text = "Start";
             this.chkStart.UseVisualStyleBackColor = true;
+            this.chkStart.CheckedChanged += new System.EventHandler(this.chkStart_CheckedChanged);
             // 
             // chkY
             // 
@@ -600,6 +839,7 @@
             this.chkY.TabIndex = 3;
             this.chkY.Text = "Y";
             this.chkY.UseVisualStyleBackColor = true;
+            this.chkY.CheckedChanged += new System.EventHandler(this.chkY_CheckedChanged);
             // 
             // chkX
             // 
@@ -611,6 +851,7 @@
             this.chkX.TabIndex = 2;
             this.chkX.Text = "X";
             this.chkX.UseVisualStyleBackColor = true;
+            this.chkX.CheckedChanged += new System.EventHandler(this.chkX_CheckedChanged);
             // 
             // chkB
             // 
@@ -622,6 +863,7 @@
             this.chkB.TabIndex = 1;
             this.chkB.Text = "B";
             this.chkB.UseVisualStyleBackColor = true;
+            this.chkB.CheckedChanged += new System.EventHandler(this.chkB_CheckedChanged);
             // 
             // chkA
             // 
@@ -633,6 +875,7 @@
             this.chkA.TabIndex = 0;
             this.chkA.Text = "A";
             this.chkA.UseVisualStyleBackColor = true;
+            this.chkA.CheckedChanged += new System.EventHandler(this.chkA_CheckedChanged);
             // 
             // btnMoveFrame
             // 
@@ -667,6 +910,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.leftStick)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLeftX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLeftY)).EndInit();
+            this.grpRightStick.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rightStick)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkRightX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRightX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkRightY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRightY)).EndInit();
             this.grpButtons.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -719,6 +970,22 @@
         private System.Windows.Forms.NumericUpDown txtLeftY;
         private System.Windows.Forms.Button btnLeftReset;
         private System.Windows.Forms.Button btnLeftNeutral;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TrackBar trkRightX;
+        private System.Windows.Forms.NumericUpDown txtRightX;
+        private System.Windows.Forms.Button btnRightReset;
+        private System.Windows.Forms.PictureBox rightStick;
+        private System.Windows.Forms.TrackBar trkRightY;
+        private System.Windows.Forms.NumericUpDown txtRightY;
+        private System.Windows.Forms.Button btnRightLeft;
+        private System.Windows.Forms.Button btnRightDown;
+        private System.Windows.Forms.Button btnRightUp;
+        private System.Windows.Forms.Button btnRightRight;
+        private System.Windows.Forms.Button btnRightDownLeft;
+        private System.Windows.Forms.Button btnRightDownRight;
+        private System.Windows.Forms.Button btnRightUpLeft;
+        private System.Windows.Forms.Button btnRightUpRight;
+        private System.Windows.Forms.Button btnRightNeutral;
     }
 }
 
