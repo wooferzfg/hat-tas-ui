@@ -216,6 +216,10 @@ namespace HatTASUI
             UpdateCheckBox(chkUp, "UP");
             UpdateCheckBox(chkRight, "RIGHT");
 
+            if (CurrentFrame != null)
+                txtComment.Text = CurrentFrame.Comment;
+            else
+                txtComment.Text = "";
         }
 
         private void UpdateCheckBox(CheckBox chk, string input)
@@ -615,6 +619,12 @@ namespace HatTASUI
         private void chkRight_CheckedChanged(object sender, EventArgs e)
         {
             UpdateButton(chkRight, "RIGHT");
+        }
+
+        private void txtComment_TextChanged(object sender, EventArgs e)
+        {
+            if (CurrentFrame != null)
+                CurrentFrame.Comment = txtComment.Text;
         }
     }
 }
