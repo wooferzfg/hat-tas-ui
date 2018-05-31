@@ -10,8 +10,10 @@ namespace HatTASUI
     {
         public const int STICK_MAX = 65535;
 
-        private int _CurrentFrame = 0;
+        public List<Frame> Frames { get; set; }
+        public Metadata Metadata { get; set; }
 
+        private int _CurrentFrame = 0;
         public int CurrentFrameNumber
         {
             get
@@ -40,6 +42,7 @@ namespace HatTASUI
                 SwitchToCurrentFrame();
             }
         }
+
         public Frame CurrentFrame
         {
             get
@@ -47,16 +50,13 @@ namespace HatTASUI
                 return Frames.FirstOrDefault(x => x.FrameNumber == CurrentFrameNumber);
             }
         }
-        public FrameState PreviousFrameState { get; set; }
-        public List<Frame> Frames { get; set; }
 
-        public Metadata Metadata { get; set; }
+        public FrameState PreviousFrameState { get; set; }
 
         private int _LeftX;
         private int _LeftY;
         private int _RightX;
         private int _RightY;
-
         public int LeftX
         {
             get
@@ -628,6 +628,16 @@ namespace HatTASUI
         {
             if (CurrentFrame != null)
                 CurrentFrame.Comment = txtComment.Text;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveToFile.Save(Frames, Metadata);
+        }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveToFile.SaveAs(Frames, Metadata);
         }
     }
 }

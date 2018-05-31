@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HatTASUI
 {
@@ -25,6 +22,29 @@ namespace HatTASUI
             newFrame.Changes = Changes.ToDictionary(x => x.Key, x => x.Value);
             newFrame.Comment = Comment;
             return newFrame;
+        }
+
+        public override string ToString()
+        {
+            var result = FrameNumber.ToString("000000") + ":";
+            foreach (var change in Changes)
+            {
+                if (change.Key == "LX" || change.Key == "LY" || change.Key == "RX" || change.Key == "RY")
+                {
+                    result += " " + change.Key + ":" + change.Value;
+                }
+                else if (change.Value == 1)
+                {
+                    result += " " + change.Key;
+                }
+                else
+                {
+                    result += " ~" + change.Key;
+                }
+            }
+            if (!string.IsNullOrEmpty(Comment))
+                result += "     // " + Comment;
+            return result;
         }
     }
 }
