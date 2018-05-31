@@ -1,4 +1,6 @@
-﻿namespace HatTASUI
+﻿using System;
+
+namespace HatTASUI
 {
     public class Metadata
     {
@@ -22,6 +24,22 @@
                 result += "type: fullgame\r\n";
             result += "length: " + Length + "\r\n";
             return result;
+        }
+
+        public void UpdateFromString(string line)
+        {
+            var split = line.Split(new string[] { ": " }, 2, StringSplitOptions.None);
+            if (split[0] == "name")
+                Name = split[1];
+            else if (split[0] == "type")
+            {
+                if (split[1] == "IL")
+                    Type = TASType.IL;
+                else if (split[1] == "fullgame")
+                    Type = TASType.FullGame;
+            }
+            else if (split[0] == "length")
+                Length = int.Parse(split[1]);
         }
     }
 

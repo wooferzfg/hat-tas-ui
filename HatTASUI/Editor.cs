@@ -627,7 +627,7 @@ namespace HatTASUI
         private void txtComment_TextChanged(object sender, EventArgs e)
         {
             if (CurrentFrame != null)
-                CurrentFrame.Comment = txtComment.Text;
+                CurrentFrame.Comment = txtComment.Text.Trim();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -638,6 +638,23 @@ namespace HatTASUI
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
             SaveToFile.SaveAs(Frames, Metadata);
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            var file = OpenFromFile.Open();
+            if (file != null)
+            {
+                Metadata = file.Value.Metadata;
+                Frames = file.Value.Frames;
+                framesList.Items.Clear();
+                foreach (var frame in Frames)
+                {
+                    framesList.Items.Add(frame.FrameNumber);
+                    newFrameSelect.Value = frame.FrameNumber + 1;
+                }
+                CurrentFrameNumber = 0;
+            }
         }
     }
 }

@@ -89,10 +89,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.btnMoveFrame = new System.Windows.Forms.Button();
-            this.btnMetadata = new System.Windows.Forms.Button();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnMetadata = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newFrameSelect)).BeginInit();
             this.grpInputs.SuspendLayout();
@@ -929,24 +929,15 @@
             this.btnMoveFrame.UseVisualStyleBackColor = true;
             this.btnMoveFrame.Click += new System.EventHandler(this.btnMoveFrame_Click);
             // 
-            // btnMetadata
+            // btnSave
             // 
-            this.btnMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMetadata.Location = new System.Drawing.Point(586, 490);
-            this.btnMetadata.Name = "btnMetadata";
-            this.btnMetadata.Size = new System.Drawing.Size(100, 23);
-            this.btnMetadata.TabIndex = 7;
-            this.btnMetadata.Text = "Edit Metadata...";
-            this.btnMetadata.UseVisualStyleBackColor = true;
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(692, 490);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(100, 23);
-            this.btnOpen.TabIndex = 8;
-            this.btnOpen.Text = "Open...";
-            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(904, 490);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 23);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnSaveAs
             // 
@@ -958,15 +949,25 @@
             this.btnSaveAs.UseVisualStyleBackColor = true;
             this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
-            // btnSave
+            // btnOpen
             // 
-            this.btnSave.Location = new System.Drawing.Point(904, 490);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 23);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnOpen.Location = new System.Drawing.Point(692, 490);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(100, 23);
+            this.btnOpen.TabIndex = 8;
+            this.btnOpen.Text = "Open...";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // btnMetadata
+            // 
+            this.btnMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMetadata.Location = new System.Drawing.Point(586, 490);
+            this.btnMetadata.Name = "btnMetadata";
+            this.btnMetadata.Size = new System.Drawing.Size(100, 23);
+            this.btnMetadata.TabIndex = 7;
+            this.btnMetadata.Text = "Edit Metadata...";
+            this.btnMetadata.UseVisualStyleBackColor = true;
             // 
             // Editor
             // 
