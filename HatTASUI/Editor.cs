@@ -50,6 +50,8 @@ namespace HatTASUI
         public FrameState PreviousFrameState { get; set; }
         public List<Frame> Frames { get; set; }
 
+        public Metadata Metadata { get; set; }
+
         private int _LeftX;
         private int _LeftY;
         private int _RightX;
@@ -137,6 +139,7 @@ namespace HatTASUI
             InitializeStickDrawings();
             Frames = new List<Frame>();
             CurrentFrameNumber = 0;
+            Metadata = new Metadata();
         }
 
         private void InitializeStickDrawings()
