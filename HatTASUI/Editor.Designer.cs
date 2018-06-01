@@ -93,6 +93,8 @@
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnMetadata = new System.Windows.Forms.Button();
+            this.txtSpeed = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newFrameSelect)).BeginInit();
             this.grpInputs.SuspendLayout();
@@ -235,15 +237,19 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.26786F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.58333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.17262F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.45833F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.22024F));
             this.tableLayoutPanel2.Controls.Add(this.grpLeftStick, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.grpRightStick, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.grpButtons, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.txtComment, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.txtSpeed, 4, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 3, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -261,7 +267,7 @@
             this.grpLeftStick.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpLeftStick.Location = new System.Drawing.Point(3, 3);
             this.grpLeftStick.Name = "grpLeftStick";
-            this.grpLeftStick.Size = new System.Drawing.Size(329, 332);
+            this.grpLeftStick.Size = new System.Drawing.Size(330, 332);
             this.grpLeftStick.TabIndex = 0;
             this.grpLeftStick.TabStop = false;
             this.grpLeftStick.Text = "Left Stick";
@@ -299,7 +305,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(323, 313);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(324, 313);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // trkLeftX
@@ -472,11 +478,12 @@
             // 
             // grpRightStick
             // 
+            this.tableLayoutPanel2.SetColumnSpan(this.grpRightStick, 3);
             this.grpRightStick.Controls.Add(this.tableLayoutPanel5);
             this.grpRightStick.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpRightStick.Location = new System.Drawing.Point(338, 3);
+            this.grpRightStick.Location = new System.Drawing.Point(339, 3);
             this.grpRightStick.Name = "grpRightStick";
-            this.grpRightStick.Size = new System.Drawing.Size(331, 332);
+            this.grpRightStick.Size = new System.Drawing.Size(330, 332);
             this.grpRightStick.TabIndex = 1;
             this.grpRightStick.TabStop = false;
             this.grpRightStick.Text = "Right Stick";
@@ -515,7 +522,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(325, 313);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(324, 313);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnRightNeutral
@@ -688,7 +695,7 @@
             // 
             // grpButtons
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.grpButtons, 3);
+            this.tableLayoutPanel2.SetColumnSpan(this.grpButtons, 5);
             this.grpButtons.Controls.Add(this.tableLayoutPanel3);
             this.grpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpButtons.Location = new System.Drawing.Point(3, 341);
@@ -904,7 +911,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 441);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Comment:";
             // 
@@ -912,9 +919,9 @@
             // 
             this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.SetColumnSpan(this.txtComment, 2);
-            this.txtComment.Location = new System.Drawing.Point(72, 437);
+            this.txtComment.Location = new System.Drawing.Point(70, 437);
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(597, 20);
+            this.txtComment.Size = new System.Drawing.Size(412, 20);
             this.txtComment.TabIndex = 4;
             this.txtComment.TextChanged += new System.EventHandler(this.txtComment_TextChanged);
             // 
@@ -968,6 +975,25 @@
             this.btnMetadata.TabIndex = 7;
             this.btnMetadata.Text = "Edit Metadata...";
             this.btnMetadata.UseVisualStyleBackColor = true;
+            // 
+            // txtSpeed
+            // 
+            this.txtSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSpeed.Location = new System.Drawing.Point(565, 437);
+            this.txtSpeed.Name = "txtSpeed";
+            this.txtSpeed.Size = new System.Drawing.Size(104, 20);
+            this.txtSpeed.TabIndex = 5;
+            this.txtSpeed.Validated += new System.EventHandler(this.txtSpeed_Validated);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(488, 441);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Frame Rate:";
             // 
             // Editor
             // 
@@ -1077,6 +1103,8 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtSpeed;
+        private System.Windows.Forms.Label label2;
     }
 }
 

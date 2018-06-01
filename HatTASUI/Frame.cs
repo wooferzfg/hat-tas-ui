@@ -7,13 +7,13 @@ namespace HatTASUI
     public class Frame
     {
         public int FrameNumber { get; set; }
-        public IDictionary<string, int> Changes { get; set; }
+        public IDictionary<string, float> Changes { get; set; }
         public string Comment { get; set; }
 
         public Frame(int frameNumber)
         {
             FrameNumber = frameNumber;
-            Changes = new Dictionary<string, int>();
+            Changes = new Dictionary<string, float>();
             Comment = string.Empty;
         }
 
@@ -28,22 +28,24 @@ namespace HatTASUI
         public override string ToString()
         {
             var result = FrameNumber.ToString("000000") + ":";
+            var defaults = (new FrameState()).Inputs;
             foreach (var change in Changes)
-            {
-                if (change.Key == "LX" || change.Key == "LY" || change.Key == "RX" || change.Key == "RY")
-                {
-                    if (change.Value == Editor.STICK_MAX / 2)
-                        result += " ~" + change.Key;
-                    else
-                        result += " " + change.Key + ":" + change.Value;
-                }
-                else if (change.Value == 1)
-                {
-                    result += " " + change.Key;
-                }
-                else
+            {               
+                if (ValuesEqual(change.Value, defaults[change.Key]))
                 {
                     result += " ~" + change.Key;
+                }
+                else if (change.Key == "SPEED")
+                {
+                    result += " SPEED:" + change.Value;
+                }
+                else if (change.Key == "LX" || change.Key == "LY" || change.Key == "RX" || change.Key == "RY")
+                {
+                    result += " " + change.Key + ":" + (int)change.Value;
+                }
+                else if ((int)change.Value == 1)
+                {
+                    result += " " + change.Key;
                 }
             }
             if (!string.IsNullOrEmpty(Comment))
@@ -68,7 +70,11 @@ namespace HatTASUI
             foreach (var token in tokens)
             {
                 var tokenSplit = token.Split(':');
-                if (tokenSplit.Length > 1)
+                if (tokenSplit[0] == "SPEED")
+                {
+                    frame.Changes.Add("SPEED", float.Parse(tokenSplit[1]));
+                }
+                else if (tokenSplit.Length > 1)
                 {
                     frame.Changes.Add(tokenSplit[0], int.Parse(tokenSplit[1]));
                 }
@@ -84,6 +90,11 @@ namespace HatTASUI
             }
 
             return frame;
+        }
+
+        public static bool ValuesEqual(float value1, float value2)
+        {
+            return Math.Abs(value1 - value2) < 0.001;
         }
     }
 }

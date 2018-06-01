@@ -188,21 +188,21 @@ namespace HatTASUI
         private void SwitchToCurrentFrame()
         {
             if (CurrentFrame != null && CurrentFrame.Changes.ContainsKey("LX"))
-                LeftX = CurrentFrame.Changes["LX"];
+                LeftX = (int)CurrentFrame.Changes["LX"];
             else
-                LeftX = PreviousFrameState.Inputs["LX"];
+                LeftX = (int)PreviousFrameState.Inputs["LX"];
             if (CurrentFrame != null && CurrentFrame.Changes.ContainsKey("LY"))
-                LeftY = CurrentFrame.Changes["LY"];
+                LeftY = (int)CurrentFrame.Changes["LY"];
             else
-                LeftY = PreviousFrameState.Inputs["LY"];
+                LeftY = (int)PreviousFrameState.Inputs["LY"];
             if (CurrentFrame != null && CurrentFrame.Changes.ContainsKey("RX"))
-                RightX = CurrentFrame.Changes["RX"];
+                RightX = (int)CurrentFrame.Changes["RX"];
             else
-                RightX = PreviousFrameState.Inputs["RX"];
+                RightX = (int)PreviousFrameState.Inputs["RX"];
             if (CurrentFrame != null && CurrentFrame.Changes.ContainsKey("RY"))
-                RightY = CurrentFrame.Changes["RY"];
+                RightY = (int)CurrentFrame.Changes["RY"];
             else
-                RightY = PreviousFrameState.Inputs["RY"];
+                RightY = (int)PreviousFrameState.Inputs["RY"];
 
             UpdateCheckBox(chkA, "A");
             UpdateCheckBox(chkB, "B");
@@ -223,6 +223,17 @@ namespace HatTASUI
                 txtComment.Text = CurrentFrame.Comment;
             else
                 txtComment.Text = "";
+
+            if (CurrentFrame != null && CurrentFrame.Changes.ContainsKey("SPEED"))
+            {
+                txtSpeed.Text = CurrentFrame.Changes["SPEED"].ToString();
+                txtSpeed.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtSpeed.Text = PreviousFrameState.Inputs["SPEED"].ToString();
+                txtSpeed.BackColor = Color.White;
+            }
         }
 
         private void UpdateCheckBox(CheckBox chk, string input)
@@ -236,14 +247,14 @@ namespace HatTASUI
 
         private void ResetLeftStick()
         {
-            LeftX = PreviousFrameState.Inputs["LX"];
-            LeftY = PreviousFrameState.Inputs["LY"];
+            LeftX = (int)PreviousFrameState.Inputs["LX"];
+            LeftY = (int)PreviousFrameState.Inputs["LY"];
         }
 
         private void ResetRightStick()
         {
-            RightX = PreviousFrameState.Inputs["RX"];
-            RightY = PreviousFrameState.Inputs["RY"];
+            RightX = (int)PreviousFrameState.Inputs["RX"];
+            RightY = (int)PreviousFrameState.Inputs["RY"];
         }
 
         private void UpdateLeftStick(MouseEventArgs e)
@@ -284,12 +295,12 @@ namespace HatTASUI
             return index;
         }
 
-        private bool UpdateDictionary(string input, int value)
+        private bool UpdateDictionary(string input, float value)
         {
             if (CurrentFrame != null)
             {
                 var previousValue = PreviousFrameState.Inputs[input];
-                if (value != previousValue)
+                if (!Frame.ValuesEqual(value, previousValue))
                 {
                     CurrentFrame.Changes[input] = value;
                     return true;
@@ -549,9 +560,13 @@ namespace HatTASUI
         {
             var value = chk.Checked ? 1 : 0;
             if (UpdateDictionary(input, value))
+            {
                 chk.BackColor = Color.Yellow;
+            }
             else
+            {
                 chk.BackColor = Color.Transparent;
+            }
         }
 
         private void chkA_CheckedChanged(object sender, EventArgs e)
@@ -627,7 +642,28 @@ namespace HatTASUI
         private void txtComment_TextChanged(object sender, EventArgs e)
         {
             if (CurrentFrame != null)
+            {
                 CurrentFrame.Comment = txtComment.Text.Trim();
+            }
+        }
+
+        private void txtSpeed_Validated(object sender, EventArgs e)
+        {
+            float result = 0f;
+            float.TryParse(txtSpeed.Text, out result);
+            if (result <= 0 || result > 10000)
+            {
+                result = PreviousFrameState.Inputs["SPEED"];
+            }
+            txtSpeed.Text = result.ToString();
+            if (UpdateDictionary("SPEED", result))
+            {
+                txtSpeed.BackColor = Color.Yellow;
+            }
+            else
+            {
+                txtSpeed.BackColor = Color.White;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

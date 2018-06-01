@@ -4,11 +4,11 @@ namespace HatTASUI
 {
     public class FrameState
     {
-        public IDictionary<string, int> Inputs { get; set; }
+        public IDictionary<string, float> Inputs { get; set; }
 
         public FrameState()
         {
-            Inputs = new Dictionary<string, int>();
+            Inputs = new Dictionary<string, float>();
             Inputs["LX"] = Editor.STICK_MAX / 2;
             Inputs["LY"] = Editor.STICK_MAX / 2;
             Inputs["RX"] = Editor.STICK_MAX / 2;
@@ -27,9 +27,10 @@ namespace HatTASUI
             Inputs["DOWN"] = 0;
             Inputs["UP"] = 0;
             Inputs["RIGHT"] = 0;
+            Inputs["SPEED"] = 60;
         }
 
-        public void UpdateFromChanges(IDictionary<string, int> changes)
+        public void UpdateFromChanges(IDictionary<string, float> changes)
         {
             foreach (var key in changes.Keys)
             {
