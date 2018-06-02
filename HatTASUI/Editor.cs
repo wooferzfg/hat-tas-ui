@@ -494,27 +494,27 @@ namespace HatTASUI
             UpdateRightStick(e);
         }
 
-        private bool AddFrame(Frame frame)
+        private void AddFrame(Frame frame, int insertIndex)
         {
-            var frameNumber = frame.FrameNumber;
-            var insertIndex = IndexOfFrame(frameNumber);
-            if (insertIndex >= Frames.Count || Frames[insertIndex].FrameNumber != frameNumber)
-            {
-                Frames.Insert(insertIndex, frame);
-                framesList.Items.Insert(insertIndex, frameNumber);
-                framesList.SelectedIndex = insertIndex;
-                return true;
-            }
-            MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
+            Frames.Insert(insertIndex, frame);
+            framesList.Items.Insert(insertIndex, frame.FrameNumber);
+            framesList.SelectedIndex = insertIndex;
         }
 
         private void btnAddFrame_Click(object sender, EventArgs e)
         {
             var frameNumber = (int)newFrameSelect.Value;
             var frame = new Frame(frameNumber);
-            if (AddFrame(frame) && Frames.Count > 0)
-                newFrameSelect.Value = Frames.Last().FrameNumber + 1;
+            var insertIndex = IndexOfFrame(frameNumber);
+            if (insertIndex >= Frames.Count || Frames[insertIndex].FrameNumber != frameNumber)
+            {
+                AddFrame(frame, insertIndex);
+                newFrameSelect.Value = frameNumber + 1;
+            }
+            else
+            {
+                MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnRemoveFrame_Click(object sender, EventArgs e)
@@ -532,14 +532,23 @@ namespace HatTASUI
             var index = framesList.SelectedIndex;
             if (index >= 0 && index < Frames.Count)
             {
-                var previousFrameNumber = Frames[index].FrameNumber;
-                var frame = Frames[index].Clone();
-                frame.FrameNumber = (int)newFrameSelect.Value;
-                if (AddFrame(frame))
+                var newFrameNumber = (int)newFrameSelect.Value;
+                var insertIndex = IndexOfFrame(newFrameNumber);
+                if (insertIndex >= Frames.Count || Frames[insertIndex].FrameNumber != newFrameNumber)
                 {
-                    index = IndexOfFrame(previousFrameNumber);
+                    var frame = Frames[index];
                     Frames.RemoveAt(index);
                     framesList.Items.RemoveAt(index);
+                    if (newFrameNumber > frame.FrameNumber)
+                    {
+                        insertIndex--;
+                    }
+                    frame.FrameNumber = newFrameNumber;
+                    AddFrame(frame, insertIndex);
+                }
+                else
+                {
+                    MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
