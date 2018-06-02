@@ -1021,6 +1021,7 @@
             this.Name = "Editor";
             this.ShowIcon = false;
             this.Text = "Hat TAS File Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
             this.Load += new System.EventHandler(this.Editor_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

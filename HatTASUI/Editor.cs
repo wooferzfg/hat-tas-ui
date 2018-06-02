@@ -13,6 +13,8 @@ namespace HatTASUI
         public List<Frame> Frames { get; set; }
         public Metadata Metadata { get; set; }
 
+        public bool Modified { get; set; }
+
         private int _CurrentFrame = 0;
         public int CurrentFrameNumber
         {
@@ -73,6 +75,7 @@ namespace HatTASUI
                     txtLeftX.BackColor = Color.Yellow;
                 else
                     txtLeftX.BackColor = Color.White;
+                Modified = true;
             }
         }
         public int LeftY
@@ -91,6 +94,7 @@ namespace HatTASUI
                     txtLeftY.BackColor = Color.Yellow;
                 else
                     txtLeftY.BackColor = Color.White;
+                Modified = true;
             }
         }
         public int RightX
@@ -109,6 +113,7 @@ namespace HatTASUI
                     txtRightX.BackColor = Color.Yellow;
                 else
                     txtRightX.BackColor = Color.White;
+                Modified = true;
             }
         }
         public int RightY
@@ -127,6 +132,7 @@ namespace HatTASUI
                     txtRightY.BackColor = Color.Yellow;
                 else
                     txtRightY.BackColor = Color.White;
+                Modified = true;
             }
         }
 
@@ -472,6 +478,7 @@ namespace HatTASUI
         {
             UpdateStickDrawings();
             SwitchToCurrentFrame();
+            Modified = false;
         }
 
         private void leftStick_MouseMove(object sender, MouseEventArgs e)
@@ -510,6 +517,7 @@ namespace HatTASUI
             {
                 AddFrame(frame, insertIndex);
                 newFrameSelect.Value = frameNumber + 1;
+                Modified = true;
             }
             else
             {
@@ -524,6 +532,7 @@ namespace HatTASUI
             {
                 Frames.RemoveAt(index);
                 framesList.Items.RemoveAt(index);
+                Modified = true;
             }
         }
 
@@ -545,6 +554,7 @@ namespace HatTASUI
                     }
                     frame.FrameNumber = newFrameNumber;
                     AddFrame(frame, insertIndex);
+                    Modified = true;
                 }
                 else
                 {
@@ -576,6 +586,7 @@ namespace HatTASUI
             {
                 chk.BackColor = Color.Transparent;
             }
+            Modified = true;
         }
 
         private void chkA_CheckedChanged(object sender, EventArgs e)
@@ -653,6 +664,7 @@ namespace HatTASUI
             if (CurrentFrame != null)
             {
                 CurrentFrame.Comment = txtComment.Text.Trim();
+                Modified = true;
             }
         }
 
@@ -673,16 +685,19 @@ namespace HatTASUI
             {
                 txtSpeed.BackColor = Color.White;
             }
+            Modified = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveToFile.Save(Frames, Metadata);
+            Modified = false;
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
             SaveToFile.SaveAs(Frames, Metadata);
+            Modified = false;
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -699,6 +714,8 @@ namespace HatTASUI
                     newFrameSelect.Value = frame.FrameNumber + 1;
                 }
                 CurrentFrameNumber = 0;
+                Modified = false;
+                SaveToFile.SetFilePath(file.Value.FilePath);
             }
         }
 
@@ -711,18 +728,38 @@ namespace HatTASUI
             {
                 Metadata = oldMetadata;
             }
+            else
+            {
+                Modified = true;
+            }
+        }
+
+        private bool WarnAboutUnsavedChanges(string action, string title)
+        {
+            if (!Modified)
+                return true;
+
+            var result = MessageBox.Show(action + " Any unsaved changes will be lost.", title, MessageBoxButtons.OKCancel);
+            return result == DialogResult.OK;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("You are creating a new Hat TAS file. Any unsaved changes will be lost.", "New File", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                Frames = new List<Frame>();
-                Metadata = new Metadata();
-                framesList.Items.Clear();
-                CurrentFrameNumber = 0;
-            }
+            if (!WarnAboutUnsavedChanges("You are creating a new Hat TAS file.", "New File"))
+                return;
+
+            Frames = new List<Frame>();
+            Metadata = new Metadata();
+            framesList.Items.Clear();
+            CurrentFrameNumber = 0;
+            Modified = false;
+            SaveToFile.ClearFilePath();
+        }
+
+        private void Editor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!WarnAboutUnsavedChanges("You are closing the editor.", "Closing Editor"))
+                e.Cancel = true;
         }
     }
 }

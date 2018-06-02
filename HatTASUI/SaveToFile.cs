@@ -6,7 +6,7 @@ namespace HatTASUI
 {
     public static class SaveToFile
     {
-        public static string FileName;
+        private static string FilePath;
 
         public static void SaveAs(List<Frame> frames, Metadata metadata)
         {
@@ -17,7 +17,7 @@ namespace HatTASUI
                 var result = dialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    FileName = dialog.FileName;
+                    FilePath = dialog.FileName;
                     Save(frames, metadata);
                 }
             }
@@ -25,13 +25,13 @@ namespace HatTASUI
 
         public static void Save(List<Frame> frames, Metadata metadata)
         {
-            if (string.IsNullOrEmpty(FileName))
+            if (string.IsNullOrEmpty(FilePath))
             {
                 SaveAs(frames, metadata);
                 return;
             }
 
-            using (var file = new StreamWriter(FileName))
+            using (var file = new StreamWriter(FilePath))
             {
                 file.WriteLine(metadata.ToString());
                 foreach (var frame in frames)
@@ -39,6 +39,16 @@ namespace HatTASUI
                     file.WriteLine(frame.ToString());
                 }
             }
+        }
+
+        public static void ClearFilePath()
+        {
+            FilePath = "";
+        }
+
+        public static void SetFilePath(string filePath)
+        {
+            FilePath = filePath;
         }
     }
 }

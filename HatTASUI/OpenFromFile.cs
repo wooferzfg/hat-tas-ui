@@ -41,7 +41,7 @@ namespace HatTASUI
                         }
                     }
                 }
-                return new TASFile(frames, metadata);
+                return new TASFile(frames, metadata, filePath);
             }
             catch
             {
