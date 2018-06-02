@@ -41,6 +41,15 @@ namespace HatTASUI
             else if (split[0] == "length")
                 Length = int.Parse(split[1]);
         }
+
+        public Metadata Clone()
+        {
+            var newMetadata = new Metadata();
+            newMetadata.Name = Name;
+            newMetadata.Type = Type;
+            newMetadata.Length = Length;
+            return newMetadata;
+        }
     }
 
     public enum TASType

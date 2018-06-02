@@ -88,13 +88,14 @@
             this.chkA = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
+            this.txtSpeed = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnMoveFrame = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnMetadata = new System.Windows.Forms.Button();
-            this.txtSpeed = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnNew = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newFrameSelect)).BeginInit();
             this.grpInputs.SuspendLayout();
@@ -138,7 +139,8 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 7, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveAs, 6, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnOpen, 5, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnMetadata, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnMetadata, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnNew, 4, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -925,6 +927,25 @@
             this.txtComment.TabIndex = 4;
             this.txtComment.TextChanged += new System.EventHandler(this.txtComment_TextChanged);
             // 
+            // txtSpeed
+            // 
+            this.txtSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSpeed.Location = new System.Drawing.Point(565, 437);
+            this.txtSpeed.Name = "txtSpeed";
+            this.txtSpeed.Size = new System.Drawing.Size(104, 20);
+            this.txtSpeed.TabIndex = 5;
+            this.txtSpeed.Validated += new System.EventHandler(this.txtSpeed_Validated);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(488, 441);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Frame Rate:";
+            // 
             // btnMoveFrame
             // 
             this.btnMoveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -968,32 +989,25 @@
             // 
             // btnMetadata
             // 
-            this.btnMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMetadata.Location = new System.Drawing.Point(586, 490);
+            this.btnMetadata.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnMetadata.Location = new System.Drawing.Point(3, 490);
             this.btnMetadata.Name = "btnMetadata";
             this.btnMetadata.Size = new System.Drawing.Size(100, 23);
             this.btnMetadata.TabIndex = 7;
             this.btnMetadata.Text = "Edit Metadata...";
             this.btnMetadata.UseVisualStyleBackColor = true;
+            this.btnMetadata.Click += new System.EventHandler(this.btnMetadata_Click);
             // 
-            // txtSpeed
+            // btnNew
             // 
-            this.txtSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSpeed.Location = new System.Drawing.Point(565, 437);
-            this.txtSpeed.Name = "txtSpeed";
-            this.txtSpeed.Size = new System.Drawing.Size(104, 20);
-            this.txtSpeed.TabIndex = 5;
-            this.txtSpeed.Validated += new System.EventHandler(this.txtSpeed_Validated);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(488, 441);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Frame Rate:";
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNew.Location = new System.Drawing.Point(586, 490);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(100, 23);
+            this.btnNew.TabIndex = 11;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // Editor
             // 
@@ -1005,6 +1019,7 @@
             this.MaximumSize = new System.Drawing.Size(1023, 556);
             this.MinimumSize = new System.Drawing.Size(1023, 556);
             this.Name = "Editor";
+            this.ShowIcon = false;
             this.Text = "Hat TAS File Editor";
             this.Load += new System.EventHandler(this.Editor_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1105,6 +1120,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtSpeed;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnNew;
     }
 }
 

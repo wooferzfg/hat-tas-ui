@@ -692,5 +692,28 @@ namespace HatTASUI
                 CurrentFrameNumber = 0;
             }
         }
+
+        private void btnMetadata_Click(object sender, EventArgs e)
+        {
+            var oldMetadata = Metadata.Clone();
+            var dialog = new MetadataDialog(Metadata);
+            var result = dialog.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                Metadata = oldMetadata;
+            }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("You are creating a new Hat TAS file. Any unsaved changes will be lost.", "New File", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Frames = new List<Frame>();
+                Metadata = new Metadata();
+                framesList.Items.Clear();
+                CurrentFrameNumber = 0;
+            }
+        }
     }
 }
