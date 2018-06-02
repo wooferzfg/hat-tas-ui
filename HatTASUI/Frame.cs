@@ -94,7 +94,7 @@ namespace HatTASUI
 
         public static bool ValuesEqual(float value1, float value2)
         {
-            return Math.Abs(value1 - value2) < 0.001;
+            return Math.Abs(value1 - value2) < 0.00001;
         }
     }
 }

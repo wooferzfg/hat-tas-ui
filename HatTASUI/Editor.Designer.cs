@@ -242,8 +242,8 @@
             this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.17262F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.45833F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.58333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.22024F));
             this.tableLayoutPanel2.Controls.Add(this.grpLeftStick, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.grpRightStick, 2, 0);
@@ -923,7 +923,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.txtComment, 2);
             this.txtComment.Location = new System.Drawing.Point(70, 437);
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(412, 20);
+            this.txtComment.Size = new System.Drawing.Size(391, 20);
             this.txtComment.TabIndex = 4;
             this.txtComment.TextChanged += new System.EventHandler(this.txtComment_TextChanged);
             // 
@@ -940,11 +940,11 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(488, 441);
+            this.label2.Location = new System.Drawing.Point(467, 441);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Frame Rate:";
+            this.label2.Text = "Playback Speed:";
             // 
             // btnMoveFrame
             // 

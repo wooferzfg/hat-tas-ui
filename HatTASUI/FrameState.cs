@@ -27,7 +27,7 @@ namespace HatTASUI
             Inputs["DOWN"] = 0;
             Inputs["UP"] = 0;
             Inputs["RIGHT"] = 0;
-            Inputs["SPEED"] = 60;
+            Inputs["SPEED"] = 1;
         }
 
         public void UpdateFromChanges(IDictionary<string, float> changes)
