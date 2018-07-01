@@ -27,6 +27,7 @@ namespace HatTASUI
             txtName.Text = Metadata.Name;
             cmbType.SelectedIndex = (int)Metadata.Type;
             txtLength.Value = Metadata.Length;
+            txtFPS.Text = Metadata.FPS.ToString();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -48,6 +49,17 @@ namespace HatTASUI
         {
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void txtFPS_Validated(object sender, EventArgs e)
+        {
+            float result = 0f;
+            float.TryParse(txtFPS.Text, out result);
+            if (result > 0 && result < 1000)
+            {
+                Metadata.FPS = result;
+            }
+            txtFPS.Text = Metadata.FPS.ToString();
         }
     }
 }

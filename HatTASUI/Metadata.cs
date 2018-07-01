@@ -7,12 +7,14 @@ namespace HatTASUI
         public string Name { get; set; }
         public TASType Type { get; set; }
         public int Length { get; set; }
+        public float FPS { get; set; }
         
         public Metadata()
         {
-            Name = "TAS";
+            Name = "Generic TAS";
             Type = TASType.IL;
             Length = 10000;
+            FPS = 60;
         }
 
         public override string ToString()
@@ -20,6 +22,7 @@ namespace HatTASUI
             var result = "name: " + Name + "\r\n";
             result += "type: " + Type.ToString() + "\r\n";
             result += "length: " + Length + "\r\n";
+            result += "fps: " + FPS + "\r\n";
             return result;
         }
 
@@ -33,6 +36,8 @@ namespace HatTASUI
                 Type = (TASType)Enum.Parse(typeof(TASType), split[1]);
             else if (label == "length")
                 Length = int.Parse(split[1]);
+            else if (label == "fps")
+                FPS = float.Parse(split[1]);
         }
 
         public Metadata Clone()
@@ -41,6 +46,7 @@ namespace HatTASUI
             newMetadata.Name = Name;
             newMetadata.Type = Type;
             newMetadata.Length = Length;
+            newMetadata.FPS = FPS;
             return newMetadata;
         }
     }
