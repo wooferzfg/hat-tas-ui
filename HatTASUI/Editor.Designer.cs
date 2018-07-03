@@ -925,7 +925,7 @@
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(391, 20);
             this.txtComment.TabIndex = 4;
-            this.txtComment.TextChanged += new System.EventHandler(this.txtComment_TextChanged);
+            this.txtComment.Validated += new System.EventHandler(this.txtComment_Validated);
             // 
             // txtSpeed
             // 

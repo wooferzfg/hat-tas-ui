@@ -14,6 +14,7 @@ namespace HatTASUI
         public Metadata Metadata { get; set; }
 
         public bool Modified { get; set; }
+        private bool UpdatingComment { get; set; }
 
         private int _CurrentFrame = 0;
         public int CurrentFrameNumber
@@ -146,6 +147,7 @@ namespace HatTASUI
             Frames = new List<Frame>();
             CurrentFrameNumber = 0;
             Metadata = new Metadata();
+            UpdatingComment = false;
         }
 
         private void InitializeStickDrawings()
@@ -504,7 +506,7 @@ namespace HatTASUI
         private void AddFrame(Frame frame, int insertIndex)
         {
             Frames.Insert(insertIndex, frame);
-            framesList.Items.Insert(insertIndex, frame.FrameNumber);
+            framesList.Items.Insert(insertIndex, frame.ToListItem());
             framesList.SelectedIndex = insertIndex;
         }
 
@@ -565,13 +567,16 @@ namespace HatTASUI
 
         private void framesList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (framesList.SelectedItem != null)
+            if (!UpdatingComment)
             {
-                CurrentFrameNumber = (int)framesList.SelectedItem;
-            }
-            else
-            {
-                CurrentFrameNumber = 0;
+                if (framesList.SelectedItem != null)
+                {
+                    CurrentFrameNumber = Frames[framesList.SelectedIndex].FrameNumber;
+                }
+                else
+                {
+                    CurrentFrameNumber = 0;
+                }
             }
         }
 
@@ -659,11 +664,14 @@ namespace HatTASUI
             UpdateButton(chkRight, "RIGHT");
         }
 
-        private void txtComment_TextChanged(object sender, EventArgs e)
+        private void txtComment_Validated(object sender, EventArgs e)
         {
             if (CurrentFrame != null)
             {
                 CurrentFrame.Comment = txtComment.Text.Trim();
+                UpdatingComment = true;
+                framesList.Items[framesList.SelectedIndex] = CurrentFrame.ToListItem();
+                UpdatingComment = false;
                 Modified = true;
             }
         }
@@ -710,7 +718,7 @@ namespace HatTASUI
                 framesList.Items.Clear();
                 foreach (var frame in Frames)
                 {
-                    framesList.Items.Add(frame.FrameNumber);
+                    framesList.Items.Add(frame.ToListItem());
                     newFrameSelect.Value = frame.FrameNumber + 1;
                 }
                 CurrentFrameNumber = 0;

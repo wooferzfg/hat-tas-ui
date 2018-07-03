@@ -25,6 +25,16 @@ namespace HatTASUI
             return newFrame;
         }
 
+        public string ToListItem()
+        {
+            var result = FrameNumber + "\t";
+            if (!string.IsNullOrEmpty(Comment))
+            {
+                result += Comment;
+            }
+            return result;
+        }
+
         public override string ToString()
         {
             var result = FrameNumber.ToString("000000") + ":";
