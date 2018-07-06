@@ -30,7 +30,7 @@ namespace HatTASUI
                 {
                     UpdatePreviousFrame(value);
                     _CurrentFrame = value;
-                    grpInputs.Enabled = true;
+                    grpSelectedFrame.Enabled = true;
                     btnRemoveFrame.Enabled = true;
                     btnMoveFrame.Enabled = true;
                 }
@@ -38,7 +38,7 @@ namespace HatTASUI
                 {
                     PreviousFrameState = new FrameState();
                     _CurrentFrame = 0;
-                    grpInputs.Enabled = false;
+                    grpSelectedFrame.Enabled = false;
                     btnRemoveFrame.Enabled = false;
                     btnMoveFrame.Enabled = false;
                 }
@@ -507,6 +507,7 @@ namespace HatTASUI
         {
             Frames.Insert(insertIndex, frame);
             framesList.Items.Insert(insertIndex, frame.ToListItem());
+            framesList.SelectedIndices.Clear();
             framesList.SelectedIndex = insertIndex;
         }
 
@@ -528,6 +529,14 @@ namespace HatTASUI
         }
 
         private void btnRemoveFrame_Click(object sender, EventArgs e)
+        {
+            while (framesList.SelectedIndices.Count > 0)
+            {
+                RemoveCurrentItem();
+            }
+        }
+
+        private void RemoveCurrentItem()
         {
             var index = framesList.SelectedIndex;
             if (index >= 0 && index < Frames.Count)
