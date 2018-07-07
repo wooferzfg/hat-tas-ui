@@ -13,8 +13,21 @@ namespace HatTASUI
         public List<Frame> Frames { get; set; }
         public Metadata Metadata { get; set; }
 
-        public bool Modified { get; set; }
-        private bool UpdatingComment { get; set; }
+        private bool modified;
+        public bool Modified
+        {
+            get
+            {
+                return modified;
+            }
+            set
+            {
+                modified = value;
+                btnSave.Enabled = modified;
+            }
+        }
+
+        private bool UpdatingCurrentFrame { get; set; }
 
         private int _CurrentFrame = 0;
         public int CurrentFrameNumber
@@ -30,11 +43,14 @@ namespace HatTASUI
                 {
                     UpdatePreviousFrame(value);
                     _CurrentFrame = value;
-                    grpSelectedFrame.Enabled = true;
-                    btnRemoveFrame.Enabled = true;
-                    btnMoveFrame.Enabled = true;
+                    if (!UpdatingCurrentFrame)
+                    {
+                        grpSelectedFrame.Enabled = true;
+                        btnRemoveFrame.Enabled = true;
+                        btnMoveFrame.Enabled = true;
+                    }
                 }
-                else
+                else if (!UpdatingCurrentFrame)
                 {
                     PreviousFrameState = new FrameState();
                     _CurrentFrame = 0;
@@ -147,7 +163,7 @@ namespace HatTASUI
             Frames = new List<Frame>();
             CurrentFrameNumber = 0;
             Metadata = new Metadata();
-            UpdatingComment = false;
+            UpdatingCurrentFrame = false;
         }
 
         private void InitializeStickDrawings()
@@ -227,10 +243,18 @@ namespace HatTASUI
             UpdateCheckBox(chkUp, "UP");
             UpdateCheckBox(chkRight, "RIGHT");
 
-            if (CurrentFrame != null)
-                txtComment.Text = CurrentFrame.Comment;
-            else
-                txtComment.Text = "";
+            if (!UpdatingCurrentFrame)
+            {
+                if (CurrentFrame != null)
+                    frameNumberSelect.Value = CurrentFrameNumber;
+                else
+                    frameNumberSelect.Value = 1;
+
+                if (CurrentFrame != null)
+                    txtComment.Text = CurrentFrame.Comment;
+                else
+                    txtComment.Text = "";
+            }
 
             if (CurrentFrame != null && CurrentFrame.Changes.ContainsKey("SPEED"))
             {
@@ -505,9 +529,11 @@ namespace HatTASUI
 
         private void AddFrame(Frame frame, int insertIndex)
         {
+            UpdatingCurrentFrame = true;
             Frames.Insert(insertIndex, frame);
             framesList.Items.Insert(insertIndex, frame.ToListItem());
             framesList.SelectedIndices.Clear();
+            UpdatingCurrentFrame = false;
             framesList.SelectedIndex = insertIndex;
         }
 
@@ -547,6 +573,38 @@ namespace HatTASUI
             }
         }
 
+        private void frameNumberSelect_ValueChanged(object sender, EventArgs e)
+        {
+            var newFrameNumber = (int)frameNumberSelect.Value;
+            if (newFrameNumber != CurrentFrameNumber)
+            {
+                var index = framesList.SelectedIndex;
+                if (index >= 0 && index < Frames.Count)
+                {
+                    var insertIndex = IndexOfFrame(newFrameNumber);
+                    if (insertIndex >= Frames.Count || Frames[insertIndex].FrameNumber != newFrameNumber)
+                    {
+                        var frame = Frames[index];
+                        UpdatingCurrentFrame = true;
+                        Frames.RemoveAt(index);
+                        framesList.Items.RemoveAt(index);
+                        if (newFrameNumber > frame.FrameNumber)
+                        {
+                            insertIndex--;
+                        }
+                        frame.FrameNumber = newFrameNumber;
+                        AddFrame(frame, insertIndex);
+                        UpdatingCurrentFrame = false;
+                        Modified = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         private void btnMoveFrame_Click(object sender, EventArgs e)
         {
             var index = framesList.SelectedIndex;
@@ -576,16 +634,13 @@ namespace HatTASUI
 
         private void framesList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!UpdatingComment)
+            if (framesList.SelectedItem != null)
             {
-                if (framesList.SelectedItem != null)
-                {
-                    CurrentFrameNumber = Frames[framesList.SelectedIndex].FrameNumber;
-                }
-                else
-                {
-                    CurrentFrameNumber = 0;
-                }
+                CurrentFrameNumber = Frames[framesList.SelectedIndex].FrameNumber;
+            }
+            else
+            {
+                CurrentFrameNumber = 0;
             }
         }
 
@@ -673,14 +728,14 @@ namespace HatTASUI
             UpdateButton(chkRight, "RIGHT");
         }
 
-        private void txtComment_Validated(object sender, EventArgs e)
+        private void txtComment_TextChanged(object sender, EventArgs e)
         {
             if (CurrentFrame != null)
             {
                 CurrentFrame.Comment = txtComment.Text.Trim();
-                UpdatingComment = true;
+                UpdatingCurrentFrame = true;
                 framesList.Items[framesList.SelectedIndex] = CurrentFrame.ToListItem();
-                UpdatingComment = false;
+                UpdatingCurrentFrame = false;
                 Modified = true;
             }
         }
@@ -777,6 +832,14 @@ namespace HatTASUI
         {
             if (!WarnAboutUnsavedChanges("You are closing the editor.", "Closing Editor"))
                 e.Cancel = true;
+        }
+
+        private void Editor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (btnSave.Enabled && e.Control && e.KeyCode.ToString() == "S")
+            {
+                btnSave_Click(this, null);
+            }
         }
     }
 }

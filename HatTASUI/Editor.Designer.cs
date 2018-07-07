@@ -34,6 +34,14 @@
             this.btnAddFrame = new System.Windows.Forms.Button();
             this.lblNewFrame = new System.Windows.Forms.Label();
             this.btnRemoveFrame = new System.Windows.Forms.Button();
+            this.btnMoveFrame = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnMetadata = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.grpSelectedFrame = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.grpInputs = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.grpLeftStick = new System.Windows.Forms.GroupBox();
@@ -86,24 +94,18 @@
             this.chkX = new System.Windows.Forms.CheckBox();
             this.chkB = new System.Windows.Forms.CheckBox();
             this.chkA = new System.Windows.Forms.CheckBox();
-            this.btnMoveFrame = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnSaveAs = new System.Windows.Forms.Button();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.btnMetadata = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.txtSpeed = new System.Windows.Forms.TextBox();
-            this.txtComment = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.grpSelectedFrame = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSpeed = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.frameNumberSelect = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtComment = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.offsetSelect = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newFrameSelect)).BeginInit();
+            this.grpSelectedFrame.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.grpInputs.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.grpLeftStick.SuspendLayout();
@@ -122,8 +124,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRightY)).BeginInit();
             this.grpButtons.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.grpSelectedFrame.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameNumberSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offsetSelect)).BeginInit();
             this.SuspendLayout();
@@ -235,6 +235,103 @@
             this.btnRemoveFrame.UseVisualStyleBackColor = true;
             this.btnRemoveFrame.Click += new System.EventHandler(this.btnRemoveFrame_Click);
             // 
+            // btnMoveFrame
+            // 
+            this.btnMoveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMoveFrame.Location = new System.Drawing.Point(194, 519);
+            this.btnMoveFrame.Name = "btnMoveFrame";
+            this.btnMoveFrame.Size = new System.Drawing.Size(126, 23);
+            this.btnMoveFrame.TabIndex = 6;
+            this.btnMoveFrame.Text = "Move Selected Frames";
+            this.btnMoveFrame.UseVisualStyleBackColor = true;
+            this.btnMoveFrame.Click += new System.EventHandler(this.btnMoveFrame_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(920, 548);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 23);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Location = new System.Drawing.Point(814, 548);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(100, 23);
+            this.btnSaveAs.TabIndex = 9;
+            this.btnSaveAs.Text = "Save As...";
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(708, 548);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(100, 23);
+            this.btnOpen.TabIndex = 8;
+            this.btnOpen.Text = "Open...";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // btnMetadata
+            // 
+            this.btnMetadata.Location = new System.Drawing.Point(3, 548);
+            this.btnMetadata.Name = "btnMetadata";
+            this.btnMetadata.Size = new System.Drawing.Size(100, 23);
+            this.btnMetadata.TabIndex = 7;
+            this.btnMetadata.Text = "Edit Metadata...";
+            this.btnMetadata.UseVisualStyleBackColor = true;
+            this.btnMetadata.Click += new System.EventHandler(this.btnMetadata_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNew.Location = new System.Drawing.Point(602, 548);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(100, 23);
+            this.btnNew.TabIndex = 11;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // grpSelectedFrame
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.grpSelectedFrame, 6);
+            this.grpSelectedFrame.Controls.Add(this.tableLayoutPanel6);
+            this.grpSelectedFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpSelectedFrame.Location = new System.Drawing.Point(326, 3);
+            this.grpSelectedFrame.Name = "grpSelectedFrame";
+            this.tableLayoutPanel1.SetRowSpan(this.grpSelectedFrame, 4);
+            this.grpSelectedFrame.Size = new System.Drawing.Size(694, 539);
+            this.grpSelectedFrame.TabIndex = 14;
+            this.grpSelectedFrame.TabStop = false;
+            this.grpSelectedFrame.Text = "Selected Frame";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 445F));
+            this.tableLayoutPanel6.Controls.Add(this.grpInputs, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.frameNumberSelect, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label1, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txtComment, 3, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(688, 520);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
             // grpInputs
             // 
             this.tableLayoutPanel6.SetColumnSpan(this.grpInputs, 4);
@@ -252,7 +349,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
             this.tableLayoutPanel2.Controls.Add(this.grpLeftStick, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.grpRightStick, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.grpButtons, 0, 1);
@@ -286,7 +383,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel4.Controls.Add(this.trkLeftX, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.trkLeftY, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.leftStick, 0, 1);
@@ -501,7 +598,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel5.Controls.Add(this.btnRightNeutral, 0, 6);
             this.tableLayoutPanel5.Controls.Add(this.rightStick, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.trkRightX, 0, 0);
@@ -911,96 +1008,6 @@
             this.chkA.UseVisualStyleBackColor = true;
             this.chkA.CheckedChanged += new System.EventHandler(this.chkA_CheckedChanged);
             // 
-            // btnMoveFrame
-            // 
-            this.btnMoveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMoveFrame.Location = new System.Drawing.Point(194, 519);
-            this.btnMoveFrame.Name = "btnMoveFrame";
-            this.btnMoveFrame.Size = new System.Drawing.Size(126, 23);
-            this.btnMoveFrame.TabIndex = 6;
-            this.btnMoveFrame.Text = "Move Selected Frames";
-            this.btnMoveFrame.UseVisualStyleBackColor = true;
-            this.btnMoveFrame.Click += new System.EventHandler(this.btnMoveFrame_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(920, 548);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 23);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnSaveAs
-            // 
-            this.btnSaveAs.Location = new System.Drawing.Point(814, 548);
-            this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(100, 23);
-            this.btnSaveAs.TabIndex = 9;
-            this.btnSaveAs.Text = "Save As...";
-            this.btnSaveAs.UseVisualStyleBackColor = true;
-            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(708, 548);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(100, 23);
-            this.btnOpen.TabIndex = 8;
-            this.btnOpen.Text = "Open...";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
-            // 
-            // btnMetadata
-            // 
-            this.btnMetadata.Location = new System.Drawing.Point(3, 548);
-            this.btnMetadata.Name = "btnMetadata";
-            this.btnMetadata.Size = new System.Drawing.Size(100, 23);
-            this.btnMetadata.TabIndex = 7;
-            this.btnMetadata.Text = "Edit Metadata...";
-            this.btnMetadata.UseVisualStyleBackColor = true;
-            this.btnMetadata.Click += new System.EventHandler(this.btnMetadata_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNew.Location = new System.Drawing.Point(602, 548);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(100, 23);
-            this.btnNew.TabIndex = 11;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // txtSpeed
-            // 
-            this.txtSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtSpeed.Location = new System.Drawing.Point(104, 441);
-            this.txtSpeed.Name = "txtSpeed";
-            this.txtSpeed.Size = new System.Drawing.Size(75, 20);
-            this.txtSpeed.TabIndex = 5;
-            this.txtSpeed.Validated += new System.EventHandler(this.txtSpeed_Validated);
-            // 
-            // txtComment
-            // 
-            this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtComment.Location = new System.Drawing.Point(246, 4);
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(439, 20);
-            this.txtComment.TabIndex = 4;
-            this.txtComment.Validated += new System.EventHandler(this.txtComment_Validated);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(179, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Comment:";
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1011,40 +1018,14 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Playback Speed:";
             // 
-            // grpSelectedFrame
+            // txtSpeed
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.grpSelectedFrame, 6);
-            this.grpSelectedFrame.Controls.Add(this.tableLayoutPanel6);
-            this.grpSelectedFrame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpSelectedFrame.Location = new System.Drawing.Point(326, 3);
-            this.grpSelectedFrame.Name = "grpSelectedFrame";
-            this.tableLayoutPanel1.SetRowSpan(this.grpSelectedFrame, 4);
-            this.grpSelectedFrame.Size = new System.Drawing.Size(694, 539);
-            this.grpSelectedFrame.TabIndex = 14;
-            this.grpSelectedFrame.TabStop = false;
-            this.grpSelectedFrame.Text = "Selected Frame";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 4;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 372F));
-            this.tableLayoutPanel6.Controls.Add(this.grpInputs, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.frameNumberSelect, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label1, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.txtComment, 3, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(688, 520);
-            this.tableLayoutPanel6.TabIndex = 0;
+            this.txtSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSpeed.Location = new System.Drawing.Point(104, 441);
+            this.txtSpeed.Name = "txtSpeed";
+            this.txtSpeed.Size = new System.Drawing.Size(75, 20);
+            this.txtSpeed.TabIndex = 5;
+            this.txtSpeed.Validated += new System.EventHandler(this.txtSpeed_Validated);
             // 
             // label3
             // 
@@ -1078,6 +1059,26 @@
             0,
             0,
             0});
+            this.frameNumberSelect.ValueChanged += new System.EventHandler(this.frameNumberSelect_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(179, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Comment:";
+            // 
+            // txtComment
+            // 
+            this.txtComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtComment.Location = new System.Drawing.Point(246, 4);
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(439, 20);
+            this.txtComment.TabIndex = 4;
+            this.txtComment.TextChanged += new System.EventHandler(this.txtComment_TextChanged);
             // 
             // label4
             // 
@@ -1113,6 +1114,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 574);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1039, 613);
             this.MinimumSize = new System.Drawing.Size(1039, 613);
@@ -1121,9 +1123,13 @@
             this.Text = "Hat TAS File Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
             this.Load += new System.EventHandler(this.Editor_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Editor_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newFrameSelect)).EndInit();
+            this.grpSelectedFrame.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.grpInputs.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -1146,9 +1152,6 @@
             this.grpButtons.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.grpSelectedFrame.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameNumberSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offsetSelect)).EndInit();
             this.ResumeLayout(false);
