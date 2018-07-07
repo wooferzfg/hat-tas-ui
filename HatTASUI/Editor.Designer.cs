@@ -33,8 +33,8 @@
             this.newFrameSelect = new System.Windows.Forms.NumericUpDown();
             this.btnAddFrame = new System.Windows.Forms.Button();
             this.lblNewFrame = new System.Windows.Forms.Label();
-            this.btnRemoveFrame = new System.Windows.Forms.Button();
-            this.btnMoveFrame = new System.Windows.Forms.Button();
+            this.btnRemoveFrames = new System.Windows.Forms.Button();
+            this.btnMoveFrames = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -144,8 +144,8 @@
             this.tableLayoutPanel1.Controls.Add(this.newFrameSelect, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAddFrame, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblNewFrame, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnRemoveFrame, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnMoveFrame, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemoveFrames, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnMoveFrames, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 8, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveAs, 7, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnOpen, 6, 4);
@@ -222,29 +222,29 @@
             this.lblNewFrame.TabIndex = 4;
             this.lblNewFrame.Text = "New Frame Number:";
             // 
-            // btnRemoveFrame
+            // btnRemoveFrames
             // 
-            this.btnRemoveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRemoveFrames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnRemoveFrame, 3);
-            this.btnRemoveFrame.Location = new System.Drawing.Point(3, 461);
-            this.btnRemoveFrame.Name = "btnRemoveFrame";
-            this.btnRemoveFrame.Size = new System.Drawing.Size(317, 23);
-            this.btnRemoveFrame.TabIndex = 3;
-            this.btnRemoveFrame.Text = "Remove Selected Frames";
-            this.btnRemoveFrame.UseVisualStyleBackColor = true;
-            this.btnRemoveFrame.Click += new System.EventHandler(this.btnRemoveFrame_Click);
+            this.tableLayoutPanel1.SetColumnSpan(this.btnRemoveFrames, 3);
+            this.btnRemoveFrames.Location = new System.Drawing.Point(3, 461);
+            this.btnRemoveFrames.Name = "btnRemoveFrames";
+            this.btnRemoveFrames.Size = new System.Drawing.Size(317, 23);
+            this.btnRemoveFrames.TabIndex = 3;
+            this.btnRemoveFrames.Text = "Remove Selected Frames";
+            this.btnRemoveFrames.UseVisualStyleBackColor = true;
+            this.btnRemoveFrames.Click += new System.EventHandler(this.btnRemoveFrames_Click);
             // 
-            // btnMoveFrame
+            // btnMoveFrames
             // 
-            this.btnMoveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMoveFrame.Location = new System.Drawing.Point(194, 519);
-            this.btnMoveFrame.Name = "btnMoveFrame";
-            this.btnMoveFrame.Size = new System.Drawing.Size(126, 23);
-            this.btnMoveFrame.TabIndex = 6;
-            this.btnMoveFrame.Text = "Move Selected Frames";
-            this.btnMoveFrame.UseVisualStyleBackColor = true;
-            this.btnMoveFrame.Click += new System.EventHandler(this.btnMoveFrame_Click);
+            this.btnMoveFrames.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMoveFrames.Location = new System.Drawing.Point(194, 519);
+            this.btnMoveFrames.Name = "btnMoveFrames";
+            this.btnMoveFrames.Size = new System.Drawing.Size(126, 23);
+            this.btnMoveFrames.TabIndex = 6;
+            this.btnMoveFrames.Text = "Move Selected Frames";
+            this.btnMoveFrames.UseVisualStyleBackColor = true;
+            this.btnMoveFrames.Click += new System.EventHandler(this.btnMoveFrames_Click);
             // 
             // btnSave
             // 
@@ -1165,7 +1165,7 @@
         private System.Windows.Forms.NumericUpDown newFrameSelect;
         private System.Windows.Forms.Button btnAddFrame;
         private System.Windows.Forms.Label lblNewFrame;
-        private System.Windows.Forms.Button btnRemoveFrame;
+        private System.Windows.Forms.Button btnRemoveFrames;
         private System.Windows.Forms.GroupBox grpInputs;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox grpLeftStick;
@@ -1190,7 +1190,7 @@
         private System.Windows.Forms.TrackBar trkLeftX;
         private System.Windows.Forms.TrackBar trkLeftY;
         private System.Windows.Forms.PictureBox leftStick;
-        private System.Windows.Forms.Button btnMoveFrame;
+        private System.Windows.Forms.Button btnMoveFrames;
         private System.Windows.Forms.Button btnLeftLeft;
         private System.Windows.Forms.Button btnLeftDown;
         private System.Windows.Forms.Button btnLeftUp;

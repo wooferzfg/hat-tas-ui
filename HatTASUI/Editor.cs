@@ -46,8 +46,8 @@ namespace HatTASUI
                     if (!UpdatingCurrentFrame)
                     {
                         grpSelectedFrame.Enabled = true;
-                        btnRemoveFrame.Enabled = true;
-                        btnMoveFrame.Enabled = true;
+                        btnRemoveFrames.Enabled = true;
+                        btnMoveFrames.Enabled = true;
                     }
                 }
                 else if (!UpdatingCurrentFrame)
@@ -55,8 +55,8 @@ namespace HatTASUI
                     PreviousFrameState = new FrameState();
                     _CurrentFrame = 0;
                     grpSelectedFrame.Enabled = false;
-                    btnRemoveFrame.Enabled = false;
-                    btnMoveFrame.Enabled = false;
+                    btnRemoveFrames.Enabled = false;
+                    btnMoveFrames.Enabled = false;
                 }
                 SwitchToCurrentFrame();
             }
@@ -550,11 +550,11 @@ namespace HatTASUI
             }
             else
             {
-                MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Frame {frameNumber} already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnRemoveFrame_Click(object sender, EventArgs e)
+        private void btnRemoveFrames_Click(object sender, EventArgs e)
         {
             while (framesList.SelectedIndices.Count > 0)
             {
@@ -599,37 +599,15 @@ namespace HatTASUI
                     }
                     else
                     {
-                        MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Frame {newFrameNumber} already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        frameNumberSelect.Value = CurrentFrameNumber;
                     }
                 }
             }
         }
 
-        private void btnMoveFrame_Click(object sender, EventArgs e)
+        private void btnMoveFrames_Click(object sender, EventArgs e)
         {
-            var index = framesList.SelectedIndex;
-            if (index >= 0 && index < Frames.Count)
-            {
-                var newFrameNumber = (int)newFrameSelect.Value;
-                var insertIndex = IndexOfFrame(newFrameNumber);
-                if (insertIndex >= Frames.Count || Frames[insertIndex].FrameNumber != newFrameNumber)
-                {
-                    var frame = Frames[index];
-                    Frames.RemoveAt(index);
-                    framesList.Items.RemoveAt(index);
-                    if (newFrameNumber > frame.FrameNumber)
-                    {
-                        insertIndex--;
-                    }
-                    frame.FrameNumber = newFrameNumber;
-                    AddFrame(frame, insertIndex);
-                    Modified = true;
-                }
-                else
-                {
-                    MessageBox.Show("This frame already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
 
         private void framesList_SelectedIndexChanged(object sender, EventArgs e)
