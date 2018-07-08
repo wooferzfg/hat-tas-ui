@@ -608,6 +608,70 @@ namespace HatTASUI
 
         private void btnMoveFrames_Click(object sender, EventArgs e)
         {
+            var modifiedFrameTuples = GetModifiedFrames();
+            var frames = modifiedFrameTuples.Select(frameTuple => frameTuple.Item1).ToList();
+            if (!FramesAreValid(frames))
+                return;
+
+            Frames = frames;
+            AddFramesToList(false);
+            UpdateSelections(modifiedFrameTuples);
+        }
+
+        private void UpdateSelections(List<Tuple<Frame, bool>> frameTuples)
+        {
+            framesList.SelectedIndices.Clear();
+            for (var i = 0; i < frameTuples.Count; i++)
+            {
+                if (frameTuples[i].Item2)
+                    framesList.SelectedIndices.Add(i);
+            }
+        }
+
+        private List<Tuple<Frame, bool>> GetModifiedFrames()
+        {
+            var offset = (int)offsetSelect.Value;
+            var selectedItems = framesList.SelectedIndices;
+            var selectionIndex = 0;
+            var newFrames = new List<Tuple<Frame, bool>>();
+            for (var i = 0; i < Frames.Count; i++)
+            {
+                var curSelection = selectionIndex < selectedItems.Count ? selectedItems[selectionIndex] : -1;
+                var curFrame = Frames[i];
+                if (i == curSelection)
+                {
+                    var newFrame = curFrame.Clone();
+                    newFrame.FrameNumber = curFrame.FrameNumber + offset;
+                    newFrames.Add(new Tuple<Frame, bool>(newFrame, true));
+                    selectionIndex++;
+                }
+                else
+                {
+                    newFrames.Add(new Tuple<Frame, bool>(curFrame, false));
+                }
+            }
+            return newFrames.OrderBy(frameTuple => frameTuple.Item1.FrameNumber).ToList();
+        }
+
+        private bool FramesAreValid(List<Frame> frames)
+        {
+            var previousFrameNumber = -1;
+            for (var i = 0; i < frames.Count; i++)
+            {
+                var curFrameNumber = frames[i].FrameNumber;
+                if (curFrameNumber < 1 || curFrameNumber > 999999)
+                {
+                    MessageBox.Show($"Frame {curFrameNumber} is not valid.", "Frame Not Valid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (curFrameNumber == previousFrameNumber)
+                {
+                    MessageBox.Show($"Frame {curFrameNumber} already exists.", "Frame Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                previousFrameNumber = curFrameNumber;
+            }
+            return true;
         }
 
         private void framesList_SelectedIndexChanged(object sender, EventArgs e)
@@ -757,15 +821,22 @@ namespace HatTASUI
             {
                 Metadata = file.Value.Metadata;
                 Frames = file.Value.Frames;
-                framesList.Items.Clear();
-                foreach (var frame in Frames)
-                {
-                    framesList.Items.Add(frame.ToListItem());
-                    newFrameSelect.Value = frame.FrameNumber + 1;
-                }
+                AddFramesToList(true);
                 CurrentFrameNumber = 0;
                 Modified = false;
                 SaveToFile.SetFilePath(file.Value.FilePath);
+            }
+        }
+
+        private void AddFramesToList(bool updateNewFrameSelect)
+        {
+            framesList.Items.Clear();
+            for (var i = 0; i < Frames.Count; i++)
+            {
+                var curFrame = Frames[i];
+                framesList.Items.Add(curFrame.ToListItem());
+                if (updateNewFrameSelect && i == Frames.Count - 1)
+                    newFrameSelect.Value = curFrame.FrameNumber + 1;
             }
         }
 
